@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1><%= @bill.title.upcase %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <p>Amount: <%= @bill.amount.nil? ? "Need amount" : "$#{@bill.amount}" %></p>
+      <p>Due At: <%= @bill.due_at %></p>
+      <h4>Paid: <%= @bill.paid %></h4>
+    </div>
+  </div>
+  <div class="row text-center">
+    <button class="btn btn-info">
+      <%= link_to 'Edit Bill', edit_bill_path %>
+    </button>
+    <button class="btn btn-danger">
+      <%= link_to 'Delete Bill', bill_path, method: :delete %>
+    </button>
+  </div>
+</div>

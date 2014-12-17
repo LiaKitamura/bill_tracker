@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1>My Bizzizles</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 text-center">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h2 class="panel-title">Current Bills</h2>
+        </div>
+        <div class="panel-body">
+          <% @bills.each do |bill| %>
+            <h4><%= link_to bill.title, bill_path(bill.id) if bill.paid %></h4>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 text-center">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h2 class="panel-title">Passed Due</h2>
+        </div>
+        <div class="panel-body">
+          <% @unpaid_bills.each do |bill| %>
+            <h4><%= link_to bill.title, bill_path(bill.id) if bill.paid == false %></h4>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <button class="btn btn-default">
+      <%= link_to 'Add Bill', new_bill_path %>
+    </button>
+  </div>
+</div>
